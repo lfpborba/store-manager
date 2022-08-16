@@ -1,5 +1,8 @@
+const express = require('express');
 const app = require('./app');
 require('dotenv').config();
+
+app.use(express.json());
 
 const productController = require('./controllers/Products');
 
@@ -11,3 +14,5 @@ app.listen(process.env.PORT, () => {
 app.get('/products', productController.getAll);
 
 app.get('/products/:id', productController.getById);
+
+app.post('/products', productController.creatingProduct);
