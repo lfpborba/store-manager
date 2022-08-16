@@ -7,7 +7,7 @@ app.use(express.json());
 const productController = require('./controllers/Products');
 const validateName = require('./middlewares/ValidateProducts');
 
-// não altere esse arquivo, essa estrutura é necessária para à avaliação do projeto.
+// não altere esse arquivo, essa estrutura é necessária para à avaliação do projeto
 app.listen(process.env.PORT, () => {
   console.log(`Escutando na porta ${process.env.PORT}`);
 });
