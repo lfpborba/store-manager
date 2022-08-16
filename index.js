@@ -1,15 +1,13 @@
 const app = require('./app');
 require('dotenv').config();
 
-const products = require('./models/Products');
+const productController = require('./controllers/Products');
 
 // não altere esse arquivo, essa estrutura é necessária para à avaliação do projeto.
 app.listen(process.env.PORT, () => {
   console.log(`Escutando na porta ${process.env.PORT}`);
 });
 
-app.get('/products', async (req, res) => {
-  const prod = await products.getAll();
+app.get('/products', productController.getAll);
 
-  res.status(200).json(prod);
-});
+app.get('/products/:id', productController.getById);
