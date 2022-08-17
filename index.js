@@ -20,3 +20,5 @@ app.get('/products/:id', productController.getById);
 app.post('/products', validateName, productController.creatingProduct);
 
 app.get('/sales', salesController.getAllSales);
+
+app.get('/sales/:id', salesController.getSalesById);
