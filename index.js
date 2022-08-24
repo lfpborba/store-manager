@@ -22,3 +22,5 @@ app.post('/products', validateName, productController.creatingProduct);
 app.get('/sales', salesController.getAllSales);
 
 app.get('/sales/:id', salesController.getSalesById);
+
+// app.post('/sales', salesController.insertSales);

@@ -1,14 +1,10 @@
 const connection = require('./Connections');
 
 const getAll = async () => {
-  const query = `SELECT 
-  sp.sale_id AS saleId,
-  s.date, 
-  sp.product_Id AS productId,
-  sp.quantity 
-  FROM sales s
-  INNER JOIN sales_products sp
-  on s.id = sp.sale_id`;
+  const query = `
+  SELECT * FROM StoreManager.sales AS s
+  INNER JOIN StoreManager.sales_products sp
+  ON s.id = sp.sale_id`;
   
   const [result] = await connection.execute(query);
 
@@ -16,17 +12,15 @@ const getAll = async () => {
 };
 
 const getSalesById = async (salesId) => {
-  const query = `SELECT s.date,
-  sp.product_Id AS productId,
-  sp.quantity 
-  FROM sales s
-  INNER JOIN sales_products sp
-  on s.id = sp.sale_id
-  WHERE sale_id=?`;
+  const query = `
+  SELECT * FROM StoreManager.sales s
+  INNER JOIN StoreManager.sales_products sp
+  ON s.id = sp.sale_id
+  WHERE s.id = ?`;
 
-  const [[sales]] = await connection.execute(query, [salesId]);
+  const [sales] = await connection.execute(query, [salesId]);
 
-  if (!sales) return null;
+  if (!sales[0]) return null;
 
   return sales;
 };
