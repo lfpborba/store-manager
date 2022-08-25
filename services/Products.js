@@ -14,9 +14,7 @@ const deleteProduct = async (ProductId) => {
 const checkProducts = async (ProductId) => {
   const data = await modelsProduct.getAll();
 
-  const checkProduct = data.every(
-    ({ id }) => Number(ProductId) !== id,
-  );
+  const checkProduct = data.every(({ id }) => Number(ProductId) !== id);
   
   if (checkProduct) return false;
   return true;
